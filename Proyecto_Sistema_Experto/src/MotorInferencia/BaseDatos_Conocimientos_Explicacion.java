@@ -18,8 +18,8 @@ public class BaseDatos_Conocimientos_Explicacion {
             conocimiento.setEXPLICACION(
                     "La MotherBoard funciona correctamente"
                     + "\n\nSe ha detectado la precencia de una BEEP CODE"
-                    + "\nLos BEEP CODE son pitidos ocasionados por la BIOS en donde indica de acuerdo al sonido algun problema de Hardware"
-                    + "Estos pitidos son diferentes de acuerdo al modelo de BIOS por lo tanto investigue el BeepCode correspondiente a su PC.");
+                    + "\nLos BEEP CODE son pitidos ocasionados por la BIOS en donde indica algun problema de Hardware"
+                    + "\n\nEstos pitidos son diferentes de acuerdo al modelo de BIOS por lo tanto investigue el BeepCode correspondiente a su PC.");
         } else if (conocimiento.isCOMP_MB_Q()) {
             conocimiento.setMB_F(false);
             conocimiento.setCONCLUSION(true);
