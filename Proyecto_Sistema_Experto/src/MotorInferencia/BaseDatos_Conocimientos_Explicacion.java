@@ -31,4 +31,25 @@ public class BaseDatos_Conocimientos_Explicacion {
             conocimiento.setMB_F(false);
         }
     }
+    
+    public void problemaTR(){
+        if(conocimiento.isPOLLNG()){
+           conocimiento.setIRQ_CONTROL(true);
+           conocimiento.setCONCLUSION(true);
+           conocimiento.setEXPLICACION("El estado del periferico de red funciona correctamente");
+        } else if(conocimiento.isENT_PROGRAMADA()) {
+           conocimiento.setENT_PROGRAMDA(false);
+           conocimiento.setCONCLUSION(true);
+           conocimiento.setEXPLICACION("Revise la compatibilidad del cable de red con la entrada de red \n"
+                   + "Conecte de manera correcta el cable \n"
+                   + "El periferico de red esta dañado");
+        } else if (conocimiento.isDNS_CLEAN()){
+           conocimiento.setDNS_CLEAN(false);
+           conocimiento.setCONCLUSION(true);
+           conocimiento.setEXPLICACION("¿Tiene conexión WiFi? \n" 
+           + "Revise el diagnostico del solucionador de problemas \n"
+           + "Si detecta una falla de hardware, hay que cambiar la tarjeta de red");
+        }
+    }
+
 }

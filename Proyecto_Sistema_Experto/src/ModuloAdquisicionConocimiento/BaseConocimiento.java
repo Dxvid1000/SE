@@ -10,7 +10,15 @@ public class BaseConocimiento {
     private boolean PC_ENC;
     private boolean CONCLUSION;
     private String EXPLICACION;
+    
+    /*Conocimiento de la tarjeta de red*/
 
+    private boolean POLLNG;
+    private boolean IRQ_CONTROL;
+    private boolean ENT_PROGRAMADA;
+    private boolean DMA; 
+    private boolean DNS_CLEAN;
+                
     public BaseConocimiento() {
         this.BEEP_CODE = false;        
         this.COMP_MB_Q = false;
@@ -19,6 +27,12 @@ public class BaseConocimiento {
         this.PC_ENC = false;
         this.MB_F = false;
         this.CONCLUSION = false;
+        
+        this.POLLNG = false; 
+        this.IRQ_CONTROL = false;
+        this.ENT_PROGRAMADA = false; 
+        this.DMA = false; 
+        this.DNS_CLEAN = false; 
 
     }
 
@@ -86,7 +100,44 @@ public class BaseConocimiento {
         this.EXPLICACION = EXPLICACION;
     }
     
+    public boolean isPOLLNG() {
+        return POLLNG;
+    }
     
+    public void setPOLLNG(boolean POLLNG){
+        this.POLLNG = POLLNG; 
+    }
     
+    public boolean isIRQ_CONTROL(){
+        return IRQ_CONTROL;
+    }
+    
+    public void setIRQ_CONTROL(boolean IRQ_CONTROL){
+        this.IRQ_CONTROL = IRQ_CONTROL;                
+    }
+    
+    public boolean isENT_PROGRAMADA(){
+        return ENT_PROGRAMADA;
+    }
+    
+    public void setENT_PROGRAMDA(boolean ENT_PROGRAMADA){
+        this.ENT_PROGRAMADA = ENT_PROGRAMADA;
+    }
+    
+    public boolean isDMA(){
+        return DMA; 
+    }
+    
+    public void setDMA(boolean DMA){
+        this.DMA = DMA;
+    }
           
+    public boolean isDNS_CLEAN(){
+        return DNS_CLEAN;
+    }
+    
+    public void setDNS_CLEAN(boolean DNS_CLEAN){
+        this.DNS_CLEAN = DNS_CLEAN;
+    }
+    
 }

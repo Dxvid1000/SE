@@ -38,6 +38,7 @@ public class Index extends javax.swing.JFrame {
         Descripcion = new javax.swing.JLabel();
         MB = new javax.swing.JRadioButton();
         InterfazOpciones = new javax.swing.JLabel();
+        TR = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,6 +56,13 @@ public class Index extends javax.swing.JFrame {
 
         InterfazOpciones.setText("Elija el componente que le esta causando problemas");
 
+        TR.setText("Tarjeta de Red");
+        TR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TRActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -62,16 +70,18 @@ public class Index extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(MB))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(132, 132, 132)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Descripcion)
                             .addComponent(InterfazOpciones)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(198, 198, 198)
-                        .addComponent(Titulo)))
+                        .addComponent(Titulo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TR)
+                            .addComponent(MB))))
                 .addContainerGap(137, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -85,7 +95,9 @@ public class Index extends javax.swing.JFrame {
                 .addComponent(InterfazOpciones)
                 .addGap(30, 30, 30)
                 .addComponent(MB)
-                .addContainerGap(189, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(TR)
+                .addContainerGap(166, Short.MAX_VALUE))
         );
 
         pack();
@@ -97,6 +109,13 @@ public class Index extends javax.swing.JFrame {
             falla.fallaMB(rootPane);
         }
     }//GEN-LAST:event_MBActionPerformed
+
+    private void TRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TRActionPerformed
+        FallasPC fallaTR = new FallasPC();
+        if (TR.isEnabled()){
+            fallaTR.fallaTR(rootPane);
+        }
+    }//GEN-LAST:event_TRActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,6 +160,7 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JLabel Descripcion;
     private javax.swing.JLabel InterfazOpciones;
     private javax.swing.JRadioButton MB;
+    private javax.swing.JRadioButton TR;
     private javax.swing.JLabel Titulo;
     // End of variables declaration//GEN-END:variables
 }
