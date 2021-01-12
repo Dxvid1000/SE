@@ -42,11 +42,13 @@ public class Index extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Titulo.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        Titulo.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 48)); // NOI18N
         Titulo.setText("Sistema Experto");
 
+        Descripcion.setFont(new java.awt.Font("Segoe UI Symbol", 0, 24)); // NOI18N
         Descripcion.setText("Apoyo en Mantenimiento de Hardware de computadoras");
 
+        MB.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         MB.setText("MotherBoard");
         MB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,8 +56,10 @@ public class Index extends javax.swing.JFrame {
             }
         });
 
+        InterfazOpciones.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
         InterfazOpciones.setText("Elija el componente que le esta causando problemas");
 
+        TR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         TR.setText("Tarjeta de Red");
         TR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,35 +73,37 @@ public class Index extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(Descripcion)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(42, 42, 42)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(TR)
+                                .addComponent(MB))
+                            .addGap(511, 511, 511)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Descripcion)
-                            .addComponent(InterfazOpciones)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(198, 198, 198)
-                        .addComponent(Titulo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TR)
-                            .addComponent(MB))))
-                .addContainerGap(137, Short.MAX_VALUE))
+                        .addGap(208, 208, 208)
+                        .addComponent(Titulo)))
+                .addContainerGap(58, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(InterfazOpciones)
+                .addGap(153, 153, 153))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(67, 67, 67)
                 .addComponent(Titulo)
-                .addGap(18, 18, 18)
-                .addComponent(Descripcion)
-                .addGap(30, 30, 30)
-                .addComponent(InterfazOpciones)
-                .addGap(30, 30, 30)
-                .addComponent(MB)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Descripcion)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(InterfazOpciones)
+                .addGap(37, 37, 37)
+                .addComponent(MB)
+                .addGap(28, 28, 28)
                 .addComponent(TR)
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
 
         pack();
