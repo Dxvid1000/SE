@@ -5,11 +5,13 @@
  */
 package ModuloInterfazUsuario;
 
+import javax.swing.UIManager;
 import MotorInferencia.BaseDatos_Conocimientos_Explicacion;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import static javax.swing.JOptionPane.YES_NO_OPTION;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -137,7 +139,7 @@ public class Index extends javax.swing.JFrame {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    javax.swing.UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
                     break;
                 }
             }
@@ -155,7 +157,7 @@ public class Index extends javax.swing.JFrame {
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+       
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
