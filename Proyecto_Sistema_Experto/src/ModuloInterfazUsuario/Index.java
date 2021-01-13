@@ -36,6 +36,7 @@ public class Index extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jColorChooser1 = new javax.swing.JColorChooser();
         Titulo = new javax.swing.JLabel();
         Descripcion = new javax.swing.JLabel();
         MB = new javax.swing.JRadioButton();
@@ -43,13 +44,14 @@ public class Index extends javax.swing.JFrame {
         TR = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 0, 0));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        Titulo.setFont(new java.awt.Font("PMingLiU-ExtB", 1, 48)); // NOI18N
+        Titulo.setFont(new java.awt.Font("Script MT Bold", 0, 48)); // NOI18N
         Titulo.setText("Sistema Experto");
 
-        Descripcion.setFont(new java.awt.Font("Segoe UI Symbol", 0, 24)); // NOI18N
-        Descripcion.setText("Apoyo en Mantenimiento de Hardware de computadoras");
+        Descripcion.setFont(new java.awt.Font("Script MT Bold", 3, 48)); // NOI18N
+        Descripcion.setText("\"WISE MACHINE\"");
 
         MB.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         MB.setText("MotherBoard");
@@ -60,7 +62,7 @@ public class Index extends javax.swing.JFrame {
         });
 
         InterfazOpciones.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
-        InterfazOpciones.setText("Elija el componente que le esta causando problemas");
+        InterfazOpciones.setText("Por favor seleccione el componente que le esta causando problemas");
 
         TR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         TR.setText("Tarjeta de Red");
@@ -77,37 +79,32 @@ public class Index extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Descripcion)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(TR)
-                                    .addComponent(MB))
-                                .addGap(511, 511, 511))))
+                        .addGap(86, 86, 86)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TR)
+                            .addComponent(MB)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(208, 208, 208)
-                        .addComponent(Titulo)))
-                .addContainerGap(58, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(InterfazOpciones)
-                .addGap(153, 153, 153))
+                        .addGap(74, 74, 74)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(InterfazOpciones)
+                            .addComponent(Descripcion)
+                            .addComponent(Titulo))))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
+                .addGap(54, 54, 54)
                 .addComponent(Titulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(Descripcion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(32, 32, 32)
                 .addComponent(InterfazOpciones)
-                .addGap(37, 37, 37)
+                .addGap(18, 18, 18)
                 .addComponent(MB)
-                .addGap(28, 28, 28)
+                .addGap(18, 18, 18)
                 .addComponent(TR)
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -172,5 +169,6 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JRadioButton MB;
     private javax.swing.JRadioButton TR;
     private javax.swing.JLabel Titulo;
+    private javax.swing.JColorChooser jColorChooser1;
     // End of variables declaration//GEN-END:variables
 }
