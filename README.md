@@ -1,4 +1,4 @@
-# Sistema Experto
+# Sistema Experto - Wise Machine
 
 _Diagnóstico de problemas relacionados con componentes de Hardware de computadoras personales (PC) para un posterior mantenimiento correctivo del mismo._
 
@@ -8,6 +8,6 @@ _Diagnóstico de problemas relacionados con componentes de Hardware de computado
 * **Jerónimo Palacios Uriel Israel**
 * **Zarazua Carrillo Ludwig Saul**
 
-## Proyecto Escolar 📄
+## Proyecto para la materia de Sistemas Expertos 📄
 
 Ingenieria en Computacion Fes Aragon, UNAM.
