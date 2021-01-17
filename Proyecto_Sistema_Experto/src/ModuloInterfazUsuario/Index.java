@@ -41,8 +41,9 @@ public class Index extends javax.swing.JFrame {
         Descripcion = new javax.swing.JLabel();
         MB = new javax.swing.JRadioButton();
         InterfazOpciones = new javax.swing.JLabel();
-        DD = new javax.swing.JRadioButton();
+        FP = new javax.swing.JRadioButton();
         TR = new javax.swing.JRadioButton();
+        DD = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -65,11 +66,11 @@ public class Index extends javax.swing.JFrame {
         InterfazOpciones.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
         InterfazOpciones.setText("Por favor seleccione el componente que le esta causando problemas");
 
-        DD.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        DD.setText("Disco Duro");
-        DD.addActionListener(new java.awt.event.ActionListener() {
+        FP.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        FP.setText("Fuente de Poder");
+        FP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DDActionPerformed(evt);
+                FPActionPerformed(evt);
             }
         });
 
@@ -78,6 +79,14 @@ public class Index extends javax.swing.JFrame {
         TR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TRActionPerformed(evt);
+            }
+        });
+
+        DD.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        DD.setText("Disco Duro");
+        DD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DDActionPerformed(evt);
             }
         });
 
@@ -94,13 +103,14 @@ public class Index extends javax.swing.JFrame {
                             .addComponent(Descripcion)
                             .addComponent(Titulo)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
+                        .addGap(61, 61, 61)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TR)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(MB)
-                                .addGap(48, 48, 48)
-                                .addComponent(DD)))))
+                                .addGap(52, 52, 52)
+                                .addComponent(FP))
+                            .addComponent(TR)
+                            .addComponent(DD))))
                 .addContainerGap(74, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -115,10 +125,12 @@ public class Index extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(MB)
-                    .addComponent(DD))
-                .addGap(28, 28, 28)
+                    .addComponent(FP))
+                .addGap(18, 18, 18)
                 .addComponent(TR)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(DD)
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         pack();
@@ -131,19 +143,25 @@ public class Index extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_MBActionPerformed
 
-    private void DDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DDActionPerformed
-       FallasPC fallaDD = new FallasPC();
-       if (DD.isEnabled()){
-           fallaDD.fallaDD(rootPane);
-       }
-    }//GEN-LAST:event_DDActionPerformed
+    private void FPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FPActionPerformed
+        FallasPC fallaFP = new FallasPC();
+        if (FP.isEnabled()) {
+            fallaFP.fallaFP(rootPane);
+        }
+    }//GEN-LAST:event_FPActionPerformed
 
     private void TRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TRActionPerformed
-         FallasPC fallaTR = new FallasPC();
-        if (TR.isEnabled()){            
+        FallasPC fallaTR = new FallasPC();
+        if (TR.isEnabled()) {
             fallaTR.fallaTR(rootPane);
         }
     }//GEN-LAST:event_TRActionPerformed
+
+    private void DDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DDActionPerformed
+        FallasPC fallaDD = new FallasPC();
+        if (DD.isEnabled()) {
+            fallaDD.fallaDD(rootPane);
+        }    }//GEN-LAST:event_DDActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,7 +193,7 @@ public class Index extends javax.swing.JFrame {
                     .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-       
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -187,6 +205,7 @@ public class Index extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton DD;
     private javax.swing.JLabel Descripcion;
+    private javax.swing.JRadioButton FP;
     private javax.swing.JLabel InterfazOpciones;
     private javax.swing.JRadioButton MB;
     private javax.swing.JRadioButton TR;

@@ -24,6 +24,12 @@ public class BaseConocimiento {
     private boolean TABLAS_DANADAS;
     private boolean MASTER_BOOT_RECORD;
 
+    /*Conocimiento del Disco Duro*/
+    private boolean FP_POLVOSA;
+    private boolean VENTILADOR_F;
+    private boolean CORTO_CIRCUITO;
+    private boolean CAPACIDADFP_S;
+
     /*Conocimiento GLOBAL*/
     private boolean PC_ENC;
     private boolean CONCLUSION;
@@ -54,8 +60,11 @@ public class BaseConocimiento {
         this.ITEMS_OCULTOS_PROTEGIDOS = false;
         this.UNIDAD_LEGIBLE = true;
         this.TABLAS_DANADAS = false;
-        this.APAGONES_DESCONEXIONES = false;
         this.MASTER_BOOT_RECORD = false;
+
+        this.FP_POLVOSA = false;
+        this.VENTILADOR_F = true;
+        this.CAPACIDADFP_S = false;
 
         this.PC_ENC = true;
         this.CONCLUSION = false;
@@ -64,9 +73,42 @@ public class BaseConocimiento {
         this.TIEMPO_VIDA_ALTO = false;
         this.CAMBIOS_TEMPERATURA = false;
         this.APAGONES_DESCONEXIONES = false;
+        this.CORTO_CIRCUITO = false;
         this.FIRMWARE_ACT = true;
         this.SO_ENCIENDE = false;
 
+    }
+
+    public boolean isFP_POLVOSA() {
+        return FP_POLVOSA;
+    }
+
+    public void setFP_POLVOSA(boolean FP_POLVOSA) {
+        this.FP_POLVOSA = FP_POLVOSA;
+    }
+
+    public boolean isVENTILADOR_F() {
+        return VENTILADOR_F;
+    }
+
+    public void setVENTILADOR_F(boolean VENTILADOR_F) {
+        this.VENTILADOR_F = VENTILADOR_F;
+    }
+
+    public boolean isCORTO_CIRCUITO() {
+        return CORTO_CIRCUITO;
+    }
+
+    public void setCORTO_CIRCUITO(boolean CORTO_CIRCUITO) {
+        this.CORTO_CIRCUITO = CORTO_CIRCUITO;
+    }
+
+    public boolean isCAPACIDADFP_S() {
+        return CAPACIDADFP_S;
+    }
+
+    public void setCAPACIDADFP_S(boolean CAPACIDADFP_S) {
+        this.CAPACIDADFP_S = CAPACIDADFP_S;
     }
 
     public boolean isVIRUS() {

@@ -183,4 +183,39 @@ public class FallasPC {
         }
 
     }
+
+    public void fallaFP(Component rootPane) {
+        int respuesta;
+
+        respuesta = JOptionPane.showConfirmDialog(rootPane, "El ventilador de la Fuente de Poder funciona?", "Preguntas", YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        motorI.conocimiento.setVENTILADOR_F((respuesta == 0) ? true : false);
+        motorI.problemaFP();//Primero se evalua de acuerdo a las reglas de inferencia
+        if (motorI.conocimiento.isCONCLUSION()) { //Si se logro una conclusion entonces se muestra, si no entonces continua con las demas preguntas...
+            JOptionPane.showMessageDialog(rootPane, motorI.conocimiento.getEXPLICACION(), "Conclusion", INFORMATION_MESSAGE);
+            System.exit(0);
+        }
+
+        respuesta = JOptionPane.showConfirmDialog(rootPane, "Ha sufrido de apagones o desconexiones recientemente?", "Preguntas", YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        motorI.conocimiento.setCORTO_CIRCUITO((respuesta == 0) ? true : false);
+        motorI.problemaFP();//Primero se evalua de acuerdo a las reglas de inferencia
+        if (respuesta == 0) {
+            respuesta = JOptionPane.showConfirmDialog(rootPane, "La PC enciende?", "Preguntas", YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            motorI.conocimiento.setPC_ENC((respuesta == 0) ? true : false);
+            motorI.problemaFP();//Primero se evalua de acuerdo a las reglas de inferencia
+            if (motorI.conocimiento.isCONCLUSION()) { //Si se logro una conclusion entonces se muestra, si no entonces continua con las demas preguntas...
+                JOptionPane.showMessageDialog(rootPane, motorI.conocimiento.getEXPLICACION(), "Conclusion", INFORMATION_MESSAGE);
+                System.exit(0);
+            }
+        }
+
+        respuesta = JOptionPane.showConfirmDialog(rootPane, "Ha conectado dispositivos nuevos recientemente?", "Preguntas", YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        motorI.conocimiento.setCAPACIDADFP_S((respuesta == 0) ? true : false);
+        motorI.conocimiento.setPC_ENC(false);
+        motorI.problemaFP();//Primero se evalua de acuerdo a las reglas de inferencia
+        if (motorI.conocimiento.isCONCLUSION()) { //Si se logro una conclusion entonces se muestra, si no entonces continua con las demas preguntas...
+            JOptionPane.showMessageDialog(rootPane, motorI.conocimiento.getEXPLICACION(), "Conclusion", INFORMATION_MESSAGE);
+            System.exit(0);
+        }
+
+    }
 }

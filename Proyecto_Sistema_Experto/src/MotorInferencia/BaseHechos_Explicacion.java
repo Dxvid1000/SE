@@ -13,12 +13,12 @@ public class BaseHechos_Explicacion {
                     "La MotherBoard funciona correctamente"
                     + "\n\nSe ha detectado la precencia de una BEEP CODE"
                     + "\nLos BEEP CODE son pitidos ocasionados por la BIOS en donde indica algun problema de Hardware"
-                    + "\n\nEstos pitidos son diferentes de acuerdo al modelo de BIOS por lo tanto investigue el BeepCode correspondiente a su PC.");
+                    + "\nEstos pitidos son diferentes de acuerdo al modelo de BIOS por lo tanto investigue el BeepCode correspondiente a su PC.");
         } else if (conocimiento.isCOMP_MB_Q()) {
             conocimiento.setCONCLUSION(true);
-            conocimiento.setEXPLICACION("Los componentes se encuentran quemados o inservibles.\n\n"
-                    + "\nTenemos que comprobar si la MotherBoard esta funcionando o no."
-                    + "\n\nProblema ajeno a la MotherBoard.");
+            conocimiento.setEXPLICACION("Los componentes se encuentran quemados o inservibles."
+                    + "\n\nTenemos que comprobar si la MotherBoard esta funcionando o no."
+                    + "Problema ajeno a la MotherBoard.");
         } else if (!conocimiento.isCOMP_MB_Q() && conocimiento.isCOMP_F()) {
             conocimiento.setCONCLUSION(true);
             conocimiento.setEXPLICACION("Ya que los componentes funcionan correctamente."
@@ -97,6 +97,26 @@ public class BaseHechos_Explicacion {
                     + "\n\nRevisar el número de firmware y buscar una versión actualizada, porque puede tratarse de una mera incompatibilidad."); //Explicacion/Conclusion            
         }
 
+    }
+
+    public void problemaFP() {
+        if (!conocimiento.isVENTILADOR_F()) {
+            conocimiento.setFP_POLVOSA(true);
+            conocimiento.setCONCLUSION(true);
+            conocimiento.setEXPLICACION("La Fuente de Poder esta sucia."
+                    + "\n\nSe recomienda limpiarla para quitar el exceso de polvo ya que esto hace que se atore el ventilador.");
+        } else if (conocimiento.isCORTO_CIRCUITO() && !conocimiento.isPC_ENC()) {
+            conocimiento.setCONCLUSION(true);
+            conocimiento.setEXPLICACION("Fuente de Poder quemada"
+                    + "\n\nDebido a la constante desconexion de la energia se ha presentado un corto ciruito."
+                    + "\nConsiderar comprar una nueva o en caso de ser posible mandarlo a arreglar con un servicio especializado.");
+        } else if (conocimiento.isCAPACIDADFP_S() && !conocimiento.isPC_ENC()) {
+            conocimiento.setCONCLUSION(true);
+            conocimiento.setEXPLICACION("Fuente de Poder posiblemente quemada"
+                    + "\n\nSe ha superado la capacidad de alimentacion de la fuente."
+                    + "\nPruebe a desconectar los dispositivos no escenciales y a encender la PC de nuevo"
+                    + "\nEn caso de no ver resultados positivos entonces considerar comprar una nueva o en caso de ser posible mandarlo a arreglar con un servicio especializado.");
+        }
     }
 
 }
