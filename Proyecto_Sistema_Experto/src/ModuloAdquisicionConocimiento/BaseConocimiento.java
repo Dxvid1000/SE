@@ -22,11 +22,16 @@ public class BaseConocimiento {
     private boolean TABLAS_DANADAS;
     private boolean MASTER_BOOT_RECORD;
 
-    /*Conocimiento del Disco Duro*/
+    /*Conocimiento de la Fuente de Poder*/
     private boolean FP_POLVOSA;
     private boolean VENTILADOR_F;
     private boolean CORTO_CIRCUITO;
     private boolean CAPACIDADFP_S;
+
+    /*Conocimiento de la Tarjeta Grafica*/
+    private boolean VENTANA_ERROR_TG;
+    private boolean ARTF_P;
+    private boolean VENT_TI;
 
     /*Conocimiento de las memorias RAM*/
     private boolean VENTANA_ERROR_RAM;
@@ -46,6 +51,7 @@ public class BaseConocimiento {
     private boolean APAGONES_DESCONEXIONES;
     private boolean FIRMWARE_ACT;
     private boolean SO_ENCIENDE;
+    private boolean MSG_W;
 
     public BaseConocimiento() {
         this.BEEP_CODE = false;
@@ -70,6 +76,10 @@ public class BaseConocimiento {
         this.CAPACIDADFP_S = false;
         this.VENTANA_ERROR_RAM = false;
         this.PINES_MR_L = true;
+        
+        this.VENTANA_ERROR_TG = false;
+        this.ARTF_P = false;
+        this.VENT_TI = false;
 
         this.PC_ENC = true;
         this.PC_LENTA = false;
@@ -84,7 +94,40 @@ public class BaseConocimiento {
         this.SO_ENCIENDE = false;
         this.UNIDAD_LEGIBLE = true;
         this.VIRUS = false;
+        this.MSG_W = false;
 
+    }
+
+    public boolean isVENTANA_ERROR_TG() {
+        return VENTANA_ERROR_TG;
+    }
+
+    public void setVENTANA_ERROR_TG(boolean VENTANA_ERROR_TG) {
+        this.VENTANA_ERROR_TG = VENTANA_ERROR_TG;
+    }
+
+    public boolean isARTF_P() {
+        return ARTF_P;
+    }
+
+    public void setARTF_P(boolean ARTF_P) {
+        this.ARTF_P = ARTF_P;
+    }
+
+    public boolean isVENT_TI() {
+        return VENT_TI;
+    }
+
+    public void setVENT_TI(boolean VENT_TI) {
+        this.VENT_TI = VENT_TI;
+    }
+
+    public boolean isMSG_W() {
+        return MSG_W;
+    }
+
+    public void setMSG_W(boolean MSG_W) {
+        this.MSG_W = MSG_W;
     }
 
     public boolean isVENTANA_ERROR_RAM() {

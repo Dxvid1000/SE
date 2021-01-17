@@ -254,4 +254,42 @@ public class FallasPC {
         }
 
     }
+
+    public void fallaTG(Component rootPane) {
+        int respuesta;
+
+        respuesta = JOptionPane.showConfirmDialog(rootPane, "Han aparecido ventanas de error?", "Preguntas", YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        motorI.conocimiento.setVENTANA_ERROR_TG((respuesta == 0) ? true : false);
+        motorI.problemaTG();//Primero se evalua de acuerdo a las reglas de inferencia        
+        if (motorI.conocimiento.isCONCLUSION()) { //Si se logro una conclusion entonces se muestra, si no entonces continua con las demas preguntas...
+            JOptionPane.showMessageDialog(rootPane, motorI.conocimiento.getEXPLICACION(), "Conclusion", INFORMATION_MESSAGE);
+            System.exit(0);
+        }
+
+        respuesta = JOptionPane.showConfirmDialog(rootPane, "Han aparecido mensajes de windows de error?", "Preguntas", YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        motorI.conocimiento.setMSG_W((respuesta == 0) ? true : false);
+        motorI.problemaTG();//Primero se evalua de acuerdo a las reglas de inferencia        
+        if (motorI.conocimiento.isCONCLUSION()) { //Si se logro una conclusion entonces se muestra, si no entonces continua con las demas preguntas...
+            JOptionPane.showMessageDialog(rootPane, motorI.conocimiento.getEXPLICACION(), "Conclusion", INFORMATION_MESSAGE);
+            System.exit(0);
+        }
+
+        respuesta = JOptionPane.showConfirmDialog(rootPane, "Han aparecido nieve o signos extranos en la pantalla?", "Preguntas", YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        motorI.conocimiento.setARTF_P((respuesta == 0) ? true : false);
+        motorI.problemaTG();//Primero se evalua de acuerdo a las reglas de inferencia        
+        if (motorI.conocimiento.isCONCLUSION()) { //Si se logro una conclusion entonces se muestra, si no entonces continua con las demas preguntas...
+            JOptionPane.showMessageDialog(rootPane, motorI.conocimiento.getEXPLICACION(), "Conclusion", INFORMATION_MESSAGE);
+            System.exit(0);
+        }
+
+        respuesta = JOptionPane.showConfirmDialog(rootPane, "Al iniciar la PC los ventiladores arrancan a su maxima capacidad?", "Preguntas", YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        motorI.conocimiento.setVENT_TI((respuesta == 0) ? true : false);
+        respuesta = JOptionPane.showConfirmDialog(rootPane, "Se presentan cambios de temperatura muy radicales?", "Preguntas", YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        motorI.conocimiento.setCAMBIOS_TEMPERATURA((respuesta == 0) ? true : false);
+        motorI.problemaTG();//Primero se evalua de acuerdo a las reglas de inferencia        
+        if (motorI.conocimiento.isCONCLUSION()) { //Si se logro una conclusion entonces se muestra, si no entonces continua con las demas preguntas...
+            JOptionPane.showMessageDialog(rootPane, motorI.conocimiento.getEXPLICACION(), "Conclusion", INFORMATION_MESSAGE);
+            System.exit(0);
+        }
+    }
 }

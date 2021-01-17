@@ -191,7 +191,10 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_DDActionPerformed
 
     private void TGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TGActionPerformed
-
+        FallasPC fallaTG = new FallasPC();
+        if (TG.isEnabled()) {
+            fallaTG.fallaTG(rootPane);
+        }
     }//GEN-LAST:event_TGActionPerformed
 
     private void RAMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RAMActionPerformed

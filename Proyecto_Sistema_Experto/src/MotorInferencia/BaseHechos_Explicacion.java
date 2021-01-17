@@ -138,4 +138,26 @@ public class BaseHechos_Explicacion {
         }
     }
 
+    public void problemaTG() {
+        if (conocimiento.isVENTANA_ERROR_TG()) {
+            conocimiento.setCONCLUSION(true);
+            conocimiento.setEXPLICACION("Error de Tarjeta Grafica"
+                    + "\n\nChecar el error lanzado por la ventana y corregirlo.");
+        } else if (conocimiento.isMSG_W()) {
+            conocimiento.setFIRMWARE_ACT(false);
+            conocimiento.setCONCLUSION(true);
+            conocimiento.setEXPLICACION("Posibles problemas de la Tarjeta Grafica"
+                    + "\n\nWindows lanza estos mensajes cuando el controlador deja de funcionar por un momento."
+                    + "\nSe sugiere actualizar el firmware a la version mas reciente estable desde la pagina del fabricante");
+        } else if (conocimiento.isARTF_P()) {
+            conocimiento.setCONCLUSION(true);
+            conocimiento.setEXPLICACION("Artefactos en pantalla"
+                    + "\n\nSe muestran imágenes bizarras en pantalla, síntoma de que la GPU no ha procesado correctamente los polígonos, colores u otras figuras de la imagen.");
+        } else if (conocimiento.isVENT_TI() || conocimiento.isCAMBIOS_TEMPERATURA()) {
+            conocimiento.setCONCLUSION(true);
+            conocimiento.setEXPLICACION("No se está refrigerando correctamente la GPU"
+                    + "\nSe recomienda comprar una nueva o en caso de ser posible mandarlo a arreglar con un servicio especializado.");
+        }
+    }
+
 }
