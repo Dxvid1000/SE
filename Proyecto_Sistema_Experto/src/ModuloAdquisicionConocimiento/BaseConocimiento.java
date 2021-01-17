@@ -16,11 +16,9 @@ public class BaseConocimiento {
     private boolean DNS_CLEAN;
 
     /*Conocimiento del Disco Duro*/
-    private boolean VIRUS;
     private boolean VENTANA_ERROR_HD;
     private boolean APP_INST_RECIENTE;
     private boolean ITEMS_OCULTOS_PROTEGIDOS;
-    private boolean UNIDAD_LEGIBLE;
     private boolean TABLAS_DANADAS;
     private boolean MASTER_BOOT_RECORD;
 
@@ -30,10 +28,17 @@ public class BaseConocimiento {
     private boolean CORTO_CIRCUITO;
     private boolean CAPACIDADFP_S;
 
+    /*Conocimiento de las memorias RAM*/
+    private boolean VENTANA_ERROR_RAM;
+    private boolean PINES_MR_L;
+
     /*Conocimiento GLOBAL*/
     private boolean PC_ENC;
+    private boolean PC_LENTA;
     private boolean CONCLUSION;
     private String EXPLICACION;
+    private boolean VIRUS;
+    private boolean UNIDAD_LEGIBLE;
     private boolean ERROR_FABRICACION;
     private boolean CAIDAS_GOLPES;
     private boolean TIEMPO_VIDA_ALTO;
@@ -54,19 +59,20 @@ public class BaseConocimiento {
         this.DMA = false;
         this.DNS_CLEAN = false;
 
-        this.VIRUS = false;
         this.VENTANA_ERROR_HD = false;
         this.APP_INST_RECIENTE = false;
         this.ITEMS_OCULTOS_PROTEGIDOS = false;
-        this.UNIDAD_LEGIBLE = true;
         this.TABLAS_DANADAS = false;
         this.MASTER_BOOT_RECORD = false;
 
         this.FP_POLVOSA = false;
         this.VENTILADOR_F = true;
         this.CAPACIDADFP_S = false;
+        this.VENTANA_ERROR_RAM = false;
+        this.PINES_MR_L = true;
 
         this.PC_ENC = true;
+        this.PC_LENTA = false;
         this.CONCLUSION = false;
         this.ERROR_FABRICACION = false;
         this.CAIDAS_GOLPES = false;
@@ -76,7 +82,33 @@ public class BaseConocimiento {
         this.CORTO_CIRCUITO = false;
         this.FIRMWARE_ACT = true;
         this.SO_ENCIENDE = false;
+        this.UNIDAD_LEGIBLE = true;
+        this.VIRUS = false;
 
+    }
+
+    public boolean isVENTANA_ERROR_RAM() {
+        return VENTANA_ERROR_RAM;
+    }
+
+    public void setVENTANA_ERROR_RAM(boolean VENTANA_ERROR_RAM) {
+        this.VENTANA_ERROR_RAM = VENTANA_ERROR_RAM;
+    }
+
+    public boolean isPINES_MR_L() {
+        return PINES_MR_L;
+    }
+
+    public void setPINES_MR_L(boolean PINES_MR_L) {
+        this.PINES_MR_L = PINES_MR_L;
+    }
+
+    public boolean isPC_LENTA() {
+        return PC_LENTA;
+    }
+
+    public void setPC_LENTA(boolean PC_LENTA) {
+        this.PC_LENTA = PC_LENTA;
     }
 
     public boolean isFP_POLVOSA() {

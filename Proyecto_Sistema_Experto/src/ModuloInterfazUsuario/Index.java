@@ -44,6 +44,8 @@ public class Index extends javax.swing.JFrame {
         FP = new javax.swing.JRadioButton();
         TR = new javax.swing.JRadioButton();
         DD = new javax.swing.JRadioButton();
+        TG = new javax.swing.JRadioButton();
+        RAM = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -90,6 +92,22 @@ public class Index extends javax.swing.JFrame {
             }
         });
 
+        TG.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        TG.setText("Tarjeta Grafica");
+        TG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TGActionPerformed(evt);
+            }
+        });
+
+        RAM.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        RAM.setText("Memorias RAM");
+        RAM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RAMActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -105,12 +123,16 @@ public class Index extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(61, 61, 61)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DD)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(MB)
-                                .addGap(52, 52, 52)
-                                .addComponent(FP))
-                            .addComponent(TR)
-                            .addComponent(DD))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(MB)
+                                    .addComponent(TR))
+                                .addGap(38, 38, 38)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TG)
+                                    .addComponent(FP)
+                                    .addComponent(RAM))))))
                 .addContainerGap(74, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -127,9 +149,13 @@ public class Index extends javax.swing.JFrame {
                     .addComponent(MB)
                     .addComponent(FP))
                 .addGap(18, 18, 18)
-                .addComponent(TR)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TR)
+                    .addComponent(RAM))
                 .addGap(18, 18, 18)
-                .addComponent(DD)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DD)
+                    .addComponent(TG))
                 .addContainerGap(64, Short.MAX_VALUE))
         );
 
@@ -161,7 +187,19 @@ public class Index extends javax.swing.JFrame {
         FallasPC fallaDD = new FallasPC();
         if (DD.isEnabled()) {
             fallaDD.fallaDD(rootPane);
-        }    }//GEN-LAST:event_DDActionPerformed
+        }
+    }//GEN-LAST:event_DDActionPerformed
+
+    private void TGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TGActionPerformed
+
+    }//GEN-LAST:event_TGActionPerformed
+
+    private void RAMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RAMActionPerformed
+        FallasPC fallaRAM = new FallasPC();
+        if (RAM.isEnabled()) {
+            fallaRAM.fallaRAM(rootPane);
+        }
+    }//GEN-LAST:event_RAMActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,6 +246,8 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JRadioButton FP;
     private javax.swing.JLabel InterfazOpciones;
     private javax.swing.JRadioButton MB;
+    private javax.swing.JRadioButton RAM;
+    private javax.swing.JRadioButton TG;
     private javax.swing.JRadioButton TR;
     private javax.swing.JLabel Titulo;
     private javax.swing.JColorChooser jColorChooser1;

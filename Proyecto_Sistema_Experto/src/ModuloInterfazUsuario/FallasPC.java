@@ -218,4 +218,40 @@ public class FallasPC {
         }
 
     }
+
+    public void fallaRAM(Component rootPane) {
+        int respuesta;
+
+        respuesta = JOptionPane.showConfirmDialog(rootPane, "La PC esta lenta?", "Preguntas", YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        motorI.conocimiento.setPC_LENTA((respuesta == 0) ? true : false);
+        motorI.problemaRAM();//Primero se evalua de acuerdo a las reglas de inferencia        
+        if (motorI.conocimiento.isCONCLUSION()) { //Si se logro una conclusion entonces se muestra, si no entonces continua con las demas preguntas...
+            JOptionPane.showMessageDialog(rootPane, motorI.conocimiento.getEXPLICACION(), "Conclusion", INFORMATION_MESSAGE);
+            System.exit(0);
+        }
+
+        respuesta = JOptionPane.showConfirmDialog(rootPane, "Ha aparecido alguna ventana de error?", "Preguntas", YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        motorI.conocimiento.setVENTANA_ERROR_RAM((respuesta == 0) ? true : false);
+        motorI.problemaRAM();//Primero se evalua de acuerdo a las reglas de inferencia        
+        if (motorI.conocimiento.isCONCLUSION()) { //Si se logro una conclusion entonces se muestra, si no entonces continua con las demas preguntas...
+            JOptionPane.showMessageDialog(rootPane, motorI.conocimiento.getEXPLICACION(), "Conclusion", INFORMATION_MESSAGE);
+            System.exit(0);
+        }
+
+        respuesta = JOptionPane.showConfirmDialog(rootPane, "El BIOS detecta las memorias RAM?", "Preguntas", YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        motorI.conocimiento.setUNIDAD_LEGIBLE((respuesta == 0) ? true : false);
+        respuesta = JOptionPane.showConfirmDialog(rootPane, "Los pines de conexion de las memorias estan limpias?", "Preguntas", YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        motorI.conocimiento.setPINES_MR_L((respuesta == 0) ? true : false);
+        if (respuesta == 0) {
+            motorI.problemaRAM();//Primero se evalua de acuerdo a las reglas de inferencia
+            if (motorI.conocimiento.isCONCLUSION()) { //Si se logro una conclusion entonces se muestra, si no entonces continua con las demas preguntas...
+                JOptionPane.showMessageDialog(rootPane, motorI.conocimiento.getEXPLICACION(), "Conclusion", INFORMATION_MESSAGE);
+                System.exit(0);
+            }
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Limpiar los pines con una goma de borrar de pan y volver a intentarlo.", "Conclusion", INFORMATION_MESSAGE);
+            System.exit(0);
+        }
+
+    }
 }

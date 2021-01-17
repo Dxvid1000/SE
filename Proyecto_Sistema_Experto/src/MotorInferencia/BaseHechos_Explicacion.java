@@ -119,4 +119,23 @@ public class BaseHechos_Explicacion {
         }
     }
 
+    public void problemaRAM() {
+        if (conocimiento.isPC_LENTA()) {
+            conocimiento.setCONCLUSION(true);
+            conocimiento.setEXPLICACION("RAM insuficiente"
+                    + "\n\nLa carga excesiva de programas hace que las RAM se saturen pero puede no ser un problema exclusivo de ellas."
+                    + "\nConsiderar desinstalar aplicaciones innecesarias o aumentar la cantidad de RAM."
+                    + "\nAdemas de verificar si no hay otro componente creando cuellos de botella.");
+        } else if (conocimiento.isVENTANA_ERROR_RAM()) {
+            conocimiento.setCONCLUSION(true);
+            conocimiento.setEXPLICACION("RAM insuficiente"
+                    + "\n\nSe ha superado el tamano de almacenamiento posible y se han desbordado."
+                    + "\nChecar el error lanzado por la ventana y corregirlo.");
+        } else if (!conocimiento.isUNIDAD_LEGIBLE() && conocimiento.isPINES_MR_L()) {
+            conocimiento.setCONCLUSION(true);
+            conocimiento.setEXPLICACION("RAM danadas"
+                    + "\n\nConsiderar comprar una nueva o en caso de ser posible mandarlo a arreglar con un servicio especializado.");
+        }
+    }
+
 }
