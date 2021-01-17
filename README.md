@@ -5,7 +5,6 @@ _Diagnóstico de problemas relacionados con componentes de Hardware de computado
 ## Autores ✒️
 
 * **Vasquez Anguiano David Andres** 
-* **Jerónimo Palacios Uriel Israel**
 * **Zarazua Carrillo Ludwig Saul**
 
 ## Proyecto para la materia de Sistemas Expertos 📄
