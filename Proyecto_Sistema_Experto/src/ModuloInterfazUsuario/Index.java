@@ -6,7 +6,7 @@
 package ModuloInterfazUsuario;
 
 import javax.swing.UIManager;
-import MotorInferencia.BaseDatos_Conocimientos_Explicacion;
+import MotorInferencia.BaseHechos_Explicacion;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
@@ -41,6 +41,7 @@ public class Index extends javax.swing.JFrame {
         Descripcion = new javax.swing.JLabel();
         MB = new javax.swing.JRadioButton();
         InterfazOpciones = new javax.swing.JLabel();
+        DD = new javax.swing.JRadioButton();
         TR = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -64,6 +65,14 @@ public class Index extends javax.swing.JFrame {
         InterfazOpciones.setFont(new java.awt.Font("Segoe UI Symbol", 0, 18)); // NOI18N
         InterfazOpciones.setText("Por favor seleccione el componente que le esta causando problemas");
 
+        DD.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        DD.setText("Disco Duro");
+        DD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DDActionPerformed(evt);
+            }
+        });
+
         TR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         TR.setText("Tarjeta de Red");
         TR.addActionListener(new java.awt.event.ActionListener() {
@@ -79,16 +88,19 @@ public class Index extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(86, 86, 86)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TR)
-                            .addComponent(MB)))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(74, 74, 74)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                             .addComponent(InterfazOpciones)
                             .addComponent(Descripcion)
-                            .addComponent(Titulo))))
+                            .addComponent(Titulo)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TR)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(MB)
+                                .addGap(48, 48, 48)
+                                .addComponent(DD)))))
                 .addContainerGap(74, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -101,25 +113,34 @@ public class Index extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addComponent(InterfazOpciones)
                 .addGap(18, 18, 18)
-                .addComponent(MB)
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(MB)
+                    .addComponent(DD))
+                .addGap(28, 28, 28)
                 .addComponent(TR)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void MBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MBActionPerformed
-        FallasPC falla = new FallasPC();
+        FallasPC fallaMB = new FallasPC();
         if (MB.isEnabled()) {
-            falla.fallaMB(rootPane);
+            fallaMB.fallaMB(rootPane);
         }
     }//GEN-LAST:event_MBActionPerformed
 
+    private void DDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DDActionPerformed
+       FallasPC fallaDD = new FallasPC();
+       if (DD.isEnabled()){
+           fallaDD.fallaDD(rootPane);
+       }
+    }//GEN-LAST:event_DDActionPerformed
+
     private void TRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TRActionPerformed
-        FallasPC fallaTR = new FallasPC();
-        if (TR.isEnabled()){
+         FallasPC fallaTR = new FallasPC();
+        if (TR.isEnabled()){            
             fallaTR.fallaTR(rootPane);
         }
     }//GEN-LAST:event_TRActionPerformed
@@ -164,6 +185,7 @@ public class Index extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton DD;
     private javax.swing.JLabel Descripcion;
     private javax.swing.JLabel InterfazOpciones;
     private javax.swing.JRadioButton MB;

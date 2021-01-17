@@ -5,7 +5,7 @@
  */
 package ModuloInterfazUsuario;
 
-import MotorInferencia.BaseDatos_Conocimientos_Explicacion;
+import MotorInferencia.BaseHechos_Explicacion;
 import java.awt.Component;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -18,7 +18,7 @@ import static javax.swing.JOptionPane.YES_NO_OPTION;
  */
 public class FallasPC {
 
-    BaseDatos_Conocimientos_Explicacion motorI = new BaseDatos_Conocimientos_Explicacion();
+    BaseHechos_Explicacion motorI = new BaseHechos_Explicacion();
 
     public void fallaMB(Component rootPane) {
         int respuesta;
@@ -48,14 +48,11 @@ public class FallasPC {
         }
 
         respuesta = JOptionPane.showConfirmDialog(rootPane, "El voltaje suministrado por la fuente de poder es el correcto?", "Preguntas", YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-        if (respuesta == 1) {
-            respuesta = JOptionPane.showConfirmDialog(rootPane, "Cambiar al voltaje correcto y probar a encender la PC\nEnciende?", "Preguntas", YES_NO_OPTION, INFORMATION_MESSAGE);
-            motorI.conocimiento.setPC_ENC((respuesta == 0) ? true : false);
-            motorI.problemaMB();
-            if (motorI.conocimiento.isCONCLUSION()) { //Si se logro una conclusion entonces se muestra, si no entonces continua con las demas preguntas...
-                JOptionPane.showMessageDialog(rootPane, motorI.conocimiento.getEXPLICACION());
-                System.exit(0);
-            }
+        motorI.conocimiento.setVOLT_SC((respuesta == 0) ? true : false);
+        motorI.problemaMB();
+        if (motorI.conocimiento.isCONCLUSION()) { //Si se logro una conclusion entonces se muestra, si no entonces continua con las demas preguntas...
+            JOptionPane.showMessageDialog(rootPane, motorI.conocimiento.getEXPLICACION());
+            System.exit(0);
         }
 
         respuesta = JOptionPane.showConfirmDialog(rootPane, "Vamos a probar a restablecer el CMOS\nPrimero Quitamos la Pila de reloj del BIOS\n"
@@ -113,5 +110,77 @@ public class FallasPC {
             JOptionPane.showConfirmDialog(rootPane, motorI.conocimiento.getEXPLICACION());
             System.exit(0);
         }
+    }
+
+    public void fallaDD(Component rootPane) {
+        int respuesta;
+
+        respuesta = JOptionPane.showConfirmDialog(rootPane, "Se han instalados aplicaciones recientemente?", "Preguntas", YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        motorI.conocimiento.setAPP_INST_RECIENTE((respuesta == 0) ? true : false);
+        respuesta = JOptionPane.showConfirmDialog(rootPane, "Los archivos aparerecen como protegidos u ocultos?", "Preguntas", YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        motorI.conocimiento.setITEMS_OCULTOS_PROTEGIDOS((respuesta == 0) ? true : false);
+        respuesta = JOptionPane.showConfirmDialog(rootPane, "Aparecen ventanas de error constantemente?", "Preguntas", YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        motorI.conocimiento.setVENTANA_ERROR_HD((respuesta == 0) ? true : false);
+        motorI.problemaDD();//Primero se evalua de acuerdo a las reglas de inferencia
+        if (motorI.conocimiento.isCONCLUSION()) { //Si se logro una conclusion entonces se muestra, si no entonces continua con las demas preguntas...
+            JOptionPane.showMessageDialog(rootPane, motorI.conocimiento.getEXPLICACION(), "Conclusion", INFORMATION_MESSAGE);
+            System.exit(0);
+        }
+
+        respuesta = JOptionPane.showConfirmDialog(rootPane, "El BIOS detecta al dispositivo conectado?", "Preguntas", YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (respuesta == 0) {
+            motorI.conocimiento.setFIRMWARE_ACT(true);
+            respuesta = JOptionPane.showConfirmDialog(rootPane, "Hay acceso de escritura y/o lectura al Disco Duro?", "Preguntas", YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            motorI.conocimiento.setUNIDAD_LEGIBLE((respuesta == 0) ? true : false);
+            motorI.problemaDD();//Primero se evalua de acuerdo a las reglas de inferencia
+            if (motorI.conocimiento.isCONCLUSION()) { //Si se logro una conclusion entonces se muestra, si no entonces continua con las demas preguntas...
+                JOptionPane.showMessageDialog(rootPane, motorI.conocimiento.getEXPLICACION(), "Conclusion", INFORMATION_MESSAGE);
+                System.exit(0);
+            }
+        } else {
+            respuesta = JOptionPane.showConfirmDialog(rootPane, "El Firmware o controlador esta actualizado?", "Preguntas", YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            motorI.conocimiento.setFIRMWARE_ACT((respuesta == 0) ? true : false);
+            motorI.problemaDD();//Primero se evalua de acuerdo a las reglas de inferencia
+            if (motorI.conocimiento.isCONCLUSION()) { //Si se logro una conclusion entonces se muestra, si no entonces continua con las demas preguntas...
+                JOptionPane.showMessageDialog(rootPane, motorI.conocimiento.getEXPLICACION(), "Conclusion", INFORMATION_MESSAGE);
+                System.exit(0);
+            }
+        }
+
+        respuesta = JOptionPane.showConfirmDialog(rootPane, "La PC o el DD ha subrido caidas o golpes recientemente?", "Preguntas", YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        motorI.conocimiento.setCAIDAS_GOLPES((respuesta == 0) ? true : false);
+        motorI.problemaDD();//Primero se evalua de acuerdo a las reglas de inferencia
+        if (motorI.conocimiento.isCONCLUSION()) { //Si se logro una conclusion entonces se muestra, si no entonces continua con las demas preguntas...
+            JOptionPane.showMessageDialog(rootPane, motorI.conocimiento.getEXPLICACION(), "Conclusion", INFORMATION_MESSAGE);
+            System.exit(0);
+        }
+
+        respuesta = JOptionPane.showConfirmDialog(rootPane, "Se presentan cambios de temperatura constantemente?", "Preguntas", YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        motorI.conocimiento.setCAMBIOS_TEMPERATURA((respuesta == 0) ? true : false);
+        motorI.problemaDD();//Primero se evalua de acuerdo a las reglas de inferencia
+        if (motorI.conocimiento.isCONCLUSION()) { //Si se logro una conclusion entonces se muestra, si no entonces continua con las demas preguntas...
+            JOptionPane.showMessageDialog(rootPane, motorI.conocimiento.getEXPLICACION(), "Conclusion", INFORMATION_MESSAGE);
+            System.exit(0);
+        }
+
+        respuesta = JOptionPane.showConfirmDialog(rootPane, "Ha habido apagones o desconexiones?", "Preguntas", YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        motorI.conocimiento.setAPAGONES_DESCONEXIONES((respuesta == 0) ? true : false);
+        respuesta = JOptionPane.showConfirmDialog(rootPane, "El SO arranca normalmente?", "Preguntas", YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        motorI.conocimiento.setSO_ENCIENDE((respuesta == 0) ? true : false);
+        motorI.problemaDD();//Primero se evalua de acuerdo a las reglas de inferencia
+        if (motorI.conocimiento.isCONCLUSION()) { //Si se logro una conclusion entonces se muestra, si no entonces continua con las demas preguntas...
+            JOptionPane.showMessageDialog(rootPane, motorI.conocimiento.getEXPLICACION(), "Conclusion", INFORMATION_MESSAGE);
+            System.exit(0);
+        }
+
+        respuesta = JOptionPane.showConfirmDialog(rootPane, "El tiempo de vida es alto?", "Preguntas", YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        motorI.conocimiento.setTIEMPO_VIDA_ALTO((respuesta == 0) ? true : false);
+        motorI.conocimiento.setPC_ENC((respuesta == 0) ? true : false);
+        motorI.problemaDD();//Primero se evalua de acuerdo a las reglas de inferencia
+        if (motorI.conocimiento.isCONCLUSION()) { //Si se logro una conclusion entonces se muestra, si no entonces continua con las demas preguntas...
+            JOptionPane.showMessageDialog(rootPane, motorI.conocimiento.getEXPLICACION(), "Conclusion", INFORMATION_MESSAGE);
+            System.exit(0);
+        }
+
     }
 }
