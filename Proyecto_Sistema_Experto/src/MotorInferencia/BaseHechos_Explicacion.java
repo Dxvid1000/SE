@@ -35,22 +35,14 @@ public class BaseHechos_Explicacion {
     }
 
     public void problemaTR() {
-        if (conocimiento.isPOLLNG()) {
-            conocimiento.setIRQ_CONTROL(true);
+        if (!conocimiento.isPUERTO_F()) {
             conocimiento.setCONCLUSION(true);
-            conocimiento.setEXPLICACION("El estado del periferico de red funciona correctamente");
-        } else if (conocimiento.isENT_PROGRAMADA()) {
-            conocimiento.setENT_PROGRAMDA(false);
+            conocimiento.setEXPLICACION("Puerto descompuesto"
+                    + "\n\nSe sugiere cambiar de puerto para verificar si funciona el mismo.");
+        } else if (!conocimiento.isUNIDAD_LEGIBLE()) {
             conocimiento.setCONCLUSION(true);
-            conocimiento.setEXPLICACION("Revise la compatibilidad del cable de red con la entrada de red \n"
-                    + "Conecte de manera correcta el cable \n"
-                    + "El periferico de red esta dañado");
-        } else if (conocimiento.isDNS_CLEAN()) {
-            conocimiento.setDNS_CLEAN(false);
-            conocimiento.setCONCLUSION(true);
-            conocimiento.setEXPLICACION("¿Tiene conexión WiFi? \n"
-                    + "Revise el diagnostico del solucionador de problemas \n"
-                    + "Si detecta una falla de hardware, hay que cambiar la tarjeta de red");
+            conocimiento.setEXPLICACION("Firmware desactualizado"
+                    + "\n\nSe sugiere actualizar el firmware a la version mas reciente estable desde la pagina del fabricante");
         }
     }
 
@@ -81,7 +73,7 @@ public class BaseHechos_Explicacion {
         } else if (!conocimiento.isSO_ENCIENDE() && conocimiento.isAPAGONES_DESCONEXIONES()) {
             conocimiento.setMASTER_BOOT_RECORD(true);
             conocimiento.setCONCLUSION(true);
-            conocimiento.setEXPLICACION("Se ha danado/corrompido el registroMaster Boot Record"
+            conocimiento.setEXPLICACION("Se ha danado/corrompido el registro Master Boot Record"
                     + "\n\nEsto imposibilita el arranque del Sistema Operativo"
                     + "\nAunque este error puede ser reparado con las propias aplicaciones del sistema (RecoveryDrive.exe), "
                     + "existen alternativas como EaseUS Partition Master que se encargan de hacer lo mismo sin necesidad de ir paso a paso."); //Explicacion/Conclusion            

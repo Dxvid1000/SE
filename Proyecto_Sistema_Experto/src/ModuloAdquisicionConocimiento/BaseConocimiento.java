@@ -9,13 +9,9 @@ public class BaseConocimiento {
     private boolean VOLT_SC;
 
     /*Conocimiento de la tarjeta de red*/
-    private boolean POLLNG;
-    private boolean IRQ_CONTROL;
-    private boolean ENT_PROGRAMADA;
-    private boolean DMA;
-    private boolean DNS_CLEAN;
-
-    /*Conocimiento del Disco Duro*/
+    private boolean PUERTO_F;
+    
+ /*Conocimiento del Disco Duro*/
     private boolean VENTANA_ERROR_HD;
     private boolean APP_INST_RECIENTE;
     private boolean ITEMS_OCULTOS_PROTEGIDOS;
@@ -59,12 +55,6 @@ public class BaseConocimiento {
         this.COMP_F = false;
         this.VOLT_SC = true;
 
-        this.POLLNG = false;
-        this.IRQ_CONTROL = false;
-        this.ENT_PROGRAMADA = false;
-        this.DMA = false;
-        this.DNS_CLEAN = false;
-
         this.VENTANA_ERROR_HD = false;
         this.APP_INST_RECIENTE = false;
         this.ITEMS_OCULTOS_PROTEGIDOS = false;
@@ -76,7 +66,7 @@ public class BaseConocimiento {
         this.CAPACIDADFP_S = false;
         this.VENTANA_ERROR_RAM = false;
         this.PINES_MR_L = true;
-        
+
         this.VENTANA_ERROR_TG = false;
         this.ARTF_P = false;
         this.VENT_TI = false;
@@ -95,7 +85,16 @@ public class BaseConocimiento {
         this.UNIDAD_LEGIBLE = true;
         this.VIRUS = false;
         this.MSG_W = false;
+        this.PUERTO_F = true;
 
+    }
+
+    public boolean isPUERTO_F() {
+        return PUERTO_F;
+    }
+
+    public void setPUERTO_F(boolean PUERTO_F) {
+        this.PUERTO_F = PUERTO_F;
     }
 
     public boolean isVENTANA_ERROR_TG() {
@@ -352,46 +351,6 @@ public class BaseConocimiento {
 
     public void setEXPLICACION(String EXPLICACION) {
         this.EXPLICACION = EXPLICACION;
-    }
-
-    public boolean isPOLLNG() {
-        return POLLNG;
-    }
-
-    public void setPOLLNG(boolean POLLNG) {
-        this.POLLNG = POLLNG;
-    }
-
-    public boolean isIRQ_CONTROL() {
-        return IRQ_CONTROL;
-    }
-
-    public void setIRQ_CONTROL(boolean IRQ_CONTROL) {
-        this.IRQ_CONTROL = IRQ_CONTROL;
-    }
-
-    public boolean isENT_PROGRAMADA() {
-        return ENT_PROGRAMADA;
-    }
-
-    public void setENT_PROGRAMDA(boolean ENT_PROGRAMADA) {
-        this.ENT_PROGRAMADA = ENT_PROGRAMADA;
-    }
-
-    public boolean isDMA() {
-        return DMA;
-    }
-
-    public void setDMA(boolean DMA) {
-        this.DMA = DMA;
-    }
-
-    public boolean isDNS_CLEAN() {
-        return DNS_CLEAN;
-    }
-
-    public void setDNS_CLEAN(boolean DNS_CLEAN) {
-        this.DNS_CLEAN = DNS_CLEAN;
     }
 
 }

@@ -74,40 +74,20 @@ public class FallasPC {
     public void fallaTR(Component rootPane) {
         int respuesta;
 
-        respuesta = JOptionPane.showConfirmDialog(rootPane, "Al conectar el cable de red ¿Es detectado?");
-        motorI.conocimiento.setIRQ_CONTROL((respuesta == 0) ? true : false);
-        motorI.problemaTR();
-        if (motorI.conocimiento.isCONCLUSION()) {
-            JOptionPane.showConfirmDialog(rootPane, motorI.conocimiento.getEXPLICACION());
-            System.exit(0);
-        }
+        respuesta = JOptionPane.showConfirmDialog(rootPane, "La tarjeta de red es reconocible por el BIOS?", "Preguntas", YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        motorI.conocimiento.setUNIDAD_LEGIBLE((respuesta == 0) ? true : false);
 
-        respuesta = JOptionPane.showConfirmDialog(rootPane, "¿Hay algún otro dispositivo de red exterior conectado a la PC?");
         if (respuesta == 1) {
-            respuesta = JOptionPane.showConfirmDialog(rootPane, "Revisar conexión de hardware externo", "Preguntas", YES_NO_OPTION, INFORMATION_MESSAGE);
-            motorI.conocimiento.setDMA((respuesta == 0) ? true : false);
-            motorI.problemaTR();
-            if (motorI.conocimiento.isCONCLUSION()) {
-                JOptionPane.showConfirmDialog(rootPane, motorI.conocimiento.getEXPLICACION());
+            respuesta = JOptionPane.showConfirmDialog(rootPane, "El puerto al que esta conectada la tarjeta funciona?", "Preguntas", YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            motorI.conocimiento.setPUERTO_F((respuesta == 0) ? true : false);
+            motorI.problemaTR();//Primero se evalua de acuerdo a las reglas de inferencia
+            if (motorI.conocimiento.isCONCLUSION()) { //Si se logro una conclusion entonces se muestra, si no entonces continua con las demas preguntas...
+                JOptionPane.showMessageDialog(rootPane, motorI.conocimiento.getEXPLICACION(), "Conclusion", INFORMATION_MESSAGE);
                 System.exit(0);
             }
-        }
-        respuesta = JOptionPane.showConfirmDialog(rootPane, "¿Hay conexión inalambrica activa?", "Preguntas", YES_NO_OPTION, INFORMATION_MESSAGE);
-        if (respuesta == 1) {
-            respuesta = JOptionPane.showConfirmDialog(rootPane, "Todo funciona correctamente", "Preguntas", INFORMATION_MESSAGE);
-            motorI.conocimiento.setDNS_CLEAN((respuesta == 0) ? true : false);
-            motorI.problemaTR();
-            if (motorI.conocimiento.isCONCLUSION()) {
-                JOptionPane.showConfirmDialog(rootPane, motorI.conocimiento.getEXPLICACION());
-                System.exit(0);
-            }
-        }
-
-        respuesta = JOptionPane.showConfirmDialog(rootPane, "Analizar mediante el gestor de soluciones un posible fallo de conexión");
-        motorI.conocimiento.setDNS_CLEAN((respuesta == 0) ? true : false);
-        motorI.problemaTR();
-        if (motorI.conocimiento.isCONCLUSION()) {
-            JOptionPane.showConfirmDialog(rootPane, motorI.conocimiento.getEXPLICACION());
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Posible tarjeta de red danada"
+                    + "\n\nConsiderar comprar una nueva o en caso de ser posible mandarlo a arreglar con un servicio especializado.", "Conclusion", INFORMATION_MESSAGE);
             System.exit(0);
         }
     }
